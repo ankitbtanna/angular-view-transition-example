@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex: 1;
+  border: 2px solid red;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.card {
+  flex: 1;
+  margin: 1rem;
+  max-width: 32rem;
+
+  &:hover {
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+}
+
+.toolbar {
+  view-timeline-name: toolbar-text;
+}

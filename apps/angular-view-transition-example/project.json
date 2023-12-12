@@ -8,19 +8,26 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/angular-view-transition-example",
         "index": "apps/angular-view-transition-example/src/index.html",
         "browser": "apps/angular-view-transition-example/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/angular-view-transition-example/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/angular-view-transition-example/src/favicon.ico",
           "apps/angular-view-transition-example/src/assets"
         ],
-        "styles": ["apps/angular-view-transition-example/src/styles.scss"],
+        "styles": [
+          "@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/angular-view-transition-example/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -67,11 +74,15 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/angular-view-transition-example/jest.config.ts"
       }

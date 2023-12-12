@@ -1,0 +1,65 @@
+<mat-toolbar color="primary">
+  <mat-icon (click)="back()" *ngIf="showBackArrow">arrow_back</mat-icon>
+  <div class="toolbar">Pokemons</div>
+</mat-toolbar>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <mat-button-toggle-group
+      (change)="filterPokemonsByColor($event)"
+      multiple="true"
+    >
+      <mat-button-toggle value="All">All</mat-button-toggle>
+      <mat-button-toggle value="Green">Green</mat-button-toggle>
+      <mat-button-toggle value="Orange">Orange</mat-button-toggle>
+      <mat-button-toggle value="Blue">Blue</mat-button-toggle>
+      <mat-button-toggle value="White">White</mat-button-toggle>
+      <mat-button-toggle value="Brown">Brown</mat-button-toggle>
+      <mat-button-toggle value="Yellow">Yellow</mat-button-toggle>
+      <mat-button-toggle value="Purple">Purple</mat-button-toggle>
+      <mat-button-toggle value="Pink">Pink</mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    Height:&nbsp;
+    <mat-slider min="0.1" max="2.5" step="0.1" value="0.1">
+      <input matSliderThumb (valueChange)="filterPokemonsByHeight($event)" />
+    </mat-slider>
+  </mat-toolbar-row>
+</mat-toolbar>
+<ng-container
+  *ngFor="
+    let pokemon of pokemons$
+      | async
+      | pokemonFilter : colorFilter : heightFilter
+  "
+>
+  <mat-card
+    class="card"
+    (click)="showDetails(pokemon)"
+    [style.view-transition-name]="'poke' + pokemon.id"
+  >
+    <mat-card-header>
+      <mat-card-title>{{ pokemon.name }}</mat-card-title>
+      <mat-card-subtitle
+        >{{ pokemon.power }} | {{ pokemon.weakness }} | {{ pokemon.color }} |
+        {{ pokemon.height }}m</mat-card-subtitle
+      >
+    </mat-card-header>
+    <img
+      mat-card-image
+      [src]="pokemon.image"
+      [alt]="pokemon.name"
+      class="pokemon-img"
+    />
+    <mat-card-content>
+      <p>
+        {{ pokemon.description }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="showDetails(pokemon)">
+        Show Details
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

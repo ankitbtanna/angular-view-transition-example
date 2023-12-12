@@ -1,0 +1,43 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border: 1px solid red;
+  height: -webkit-fill-available;
+}
+
+div {
+  flex: 1;
+  box-sizing: border-box; /* Ensure correct box-sizing behavior */
+  overflow-y: auto;
+}
+
+img {
+  width: fit-content;
+}
+
+mat-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon-img {
+  view-transition-name: pokemon-img;
+}
+
+.example-card {
+  display: flex;
+  border: 2px solid red;
+  box-sizing: border-box;
+  height: -webkit-fill-available;
+}
+
+.toolbar {
+  view-timeline-name: toolbar-text;
+}
+
+::view-transition-old(poke-1),
+::view-transition-new(poke-1) {
+  animation: none;
+}
